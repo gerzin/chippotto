@@ -1,4 +1,6 @@
+open Chippotto;;
+
 let main () =
-  Chippotto.Gui.start_mainloop ()
+  Gui.start_mainloop ()
 
 let () = main ()

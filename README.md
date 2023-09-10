@@ -1,0 +1,5 @@
+# Chippotto
+
+```
+dune exec chippotto
+```

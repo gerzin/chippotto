@@ -1,0 +1,4 @@
+(library
+ (name chippotto)
+ (modules Interpreter Gui)
+ (libraries labltk))

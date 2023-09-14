@@ -1,6 +1,4 @@
-open Chippotto;;
+open Chippotto
 
-let main () =
-  Gui.start_mainloop ()
-
-let () = main () 
+let main () = Gui.start_mainloop ()
+let () = main ()

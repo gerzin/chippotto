@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/gerzin/chippotto/interpreter"
+	"chippotto/interpreter"
 )
 
 func main() {

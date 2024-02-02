@@ -7,7 +7,7 @@ go_library(
         "disassembler.go",
         "interpreter.go",
     ],
-    importpath = "github.com/gerzin/chippotto/chippotto/interpreter",
+    importpath = "chippotto/interpreter",
     visibility = ["//visibility:public"],
 )
 

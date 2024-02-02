@@ -67,7 +67,14 @@ func (p *Interpreter) LoadRom(path string) {
 
 func (p *Interpreter) Step() {
 	opcode := (uint16(p.ram[p.pc]) << 8) | uint16(p.ram[p.pc+1])
-	switch opcode {
+
+	switch opcode & 0xF000 {
+	case 0x0000: // CLR
+		for i := range p.gfx {
+			p.gfx[i] = 0
+		}
+		p.drawScreen = true
+		p.pc += 2
 
 	default:
 		fmt.Printf("Invalid opcode %X\n", opcode)

@@ -3,7 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"interpreter"
+
+	"github.com/gerzin/chippotto/interpreter"
 )
 
 func main() {

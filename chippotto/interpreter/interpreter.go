@@ -65,17 +65,34 @@ func (p *Interpreter) LoadRom(path string) {
 	copy(p.ram[0x200:], fileBytes)
 }
 
+// interpret the instructions as defined in http://devernay.free.fr/hacks/chip8/C8TECH10.HTM#00E0
 func (p *Interpreter) Step() {
 	opcode := (uint16(p.ram[p.pc]) << 8) | uint16(p.ram[p.pc+1])
 
 	switch opcode & 0xF000 {
-	case 0x0000: // CLR
-		for i := range p.gfx {
-			p.gfx[i] = 0
-		}
-		p.drawScreen = true
-		p.pc += 2
+	case 0x0000:
+		switch opcode & 0x000F {
+		case 0x0: // CLS
+			for i := range p.gfx {
+				p.gfx[i] = 0
+			}
+			p.drawScreen = true
+			p.pc += 2
 
+		case 0x000E: // RET
+			p.sp = p.sp - 1
+			p.pc = p.stack[p.sp]
+			p.pc = p.pc + 2
+
+		default:
+			fmt.Printf("Invalid opcode %X\n", opcode)
+		}
+	case 0x1000: // JMP NNN
+		p.pc = opcode & 0x0FFF
+	case 0x2000: // CALL NNN
+		p.stack[p.sp] = p.pc
+		p.sp = p.sp + 1
+		p.pc = opcode & 0x0FFF
 	default:
 		fmt.Printf("Invalid opcode %X\n", opcode)
 	}

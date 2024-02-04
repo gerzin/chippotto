@@ -5,4 +5,9 @@ go_library(
     srcs = ["renderer.go"],
     importpath = "chippotto/gui",
     visibility = ["//visibility:public"],
+    deps = [
+        "@io_fyne_fyne_v2//app",
+        "@io_fyne_fyne_v2//container",
+        "@io_fyne_fyne_v2//widget",
+    ],
 )

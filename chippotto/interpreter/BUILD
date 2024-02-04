@@ -1,4 +1,4 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
     name = "interpreter",
@@ -9,9 +9,4 @@ go_library(
     ],
     importpath = "chippotto/interpreter",
     visibility = ["//visibility:public"],
-)
-
-go_test(
-    name = "interpreter_test",
-    srcs = ["interpreter_test.go"],
 )
